@@ -69,26 +69,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
-
     'words',
 
 ]
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+MIDDLEWARE_CLASSES = [
+    # 'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'django_stackoverflow_trace.DjangoStackoverTraceMiddleware',
 
 ]
-
-
-# DJANGO_STACKOVERFLOW_TRACE_SEARCH_SITE = "googlesearch"
 
 
 ROOT_URLCONF = 'mysite.urls'

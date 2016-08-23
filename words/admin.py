@@ -3,43 +3,35 @@ from django.contrib import admin
 # Register your models here.
 
 
-from .models import WordTest, Word
+from .models import WordTest, WordRecord, Word
 
 
-class WordInline(admin.TabularInline):
-    model = Word
-    extra = 50
+class WordRecordInline(admin.TabularInline):
+    model = WordRecord
+    extra = 10
 
 
-class WordAdmin(admin.ModelAdmin):
-    readonly_fields = ('word', 'is_correct', 'correct_word')
+class WordRecordAdmin(admin.ModelAdmin):
+    readonly_fields = ('word_record', 'is_correct', 'correct_word')
 
-    list_display = ('word', 'is_correct', 'correct_word')
+    list_display = ('word_record', 'is_correct', 'correct_word')
 
 
-class TestAdmin(admin.ModelAdmin):
+class WordTestAdmin(admin.ModelAdmin):
     fields = ['count']
 
-    inlines = [WordInline]
+    inlines = [WordRecordInline]
 
     list_display = ('test_date', 'count')
 
 
-class MyWord(Word):
-    class Meta(object):
-        proxy = True
+class WordAdmin(admin.ModelAdmin):
+    model = Word
 
+    list_display = ('id', 'word')
 
-
-class MyWordAdmin(admin.ModelAdmin):
-
-
-    list_display = ('word', 'is_correct')
-
-admin.site.register(WordTest, TestAdmin)
 
 admin.site.register(Word, WordAdmin)
-
-admin.site.register(MyWord, MyWordAdmin)
-
+admin.site.register(WordTest, WordTestAdmin)
+admin.site.register(WordRecord, WordRecordAdmin)
 
