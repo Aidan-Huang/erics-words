@@ -55,7 +55,7 @@ class WordRecord(models.Model):
 
     wordTest = models.ForeignKey(WordTest, on_delete=models.CASCADE)
 
-    word = models.ForeignKey(Word)
+    word = models.ForeignKey(Word, blank=True, null=True)
 
     word_record = models.CharField("word", max_length=128)
     is_correct = models.BooleanField("iscorrect", default=True)
